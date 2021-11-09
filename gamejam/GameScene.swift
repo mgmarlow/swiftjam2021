@@ -8,22 +8,19 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
-    
-    private var player: SKSpriteNode?
-    
-    override func didMove(to view: SKView) {
-        self.player = self.childNode(withName: "//Player") as? SKSpriteNode
+class Player: SKSpriteNode {
+    static func create(_ scene: SKScene) -> Player {
+        let player = Player(color: NSColor.blue, size: NSSize(width: 64, height: 64))
+        scene.addChild(player)
+        return player
     }
     
     func move(x: Int, y: Int) {
-        if let p = self.player {
-            p.position.x += CGFloat(x * 64)
-            p.position.y += CGFloat(y * 64)
-        }
+        self.position.x += CGFloat(x * 64)
+        self.position.y += CGFloat(y * 64)
     }
     
-    override func keyDown(with event: NSEvent) {
+    func handleKeyDown(_ event: NSEvent) {
         // Note: Spritekit reverses y coordinates against gamedev conventions
         switch event.keyCode {
         case 13: // w
@@ -36,6 +33,21 @@ class GameScene: SKScene {
             move(x: 1, y: 0)
         default:
             print("keyDown: \(event.characters!) keyCode: \(event.keyCode)")
+        }
+    }
+}
+
+class GameScene: SKScene {
+    private var player: Player?
+    
+    // Prefer sceneDidLoad or didMove for initialization? Original uses didMove.
+    override func sceneDidLoad() {
+        self.player = Player.create(self)
+    }
+    
+    override func keyDown(with event: NSEvent) {
+        if let p = self.player {
+            p.handleKeyDown(event)
         }
     }
     
