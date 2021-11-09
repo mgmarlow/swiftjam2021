@@ -10,7 +10,10 @@ import GameplayKit
 
 class Player: SKSpriteNode {
     static func create(_ scene: SKScene) -> Player {
-        let player = Player(color: NSColor.blue, size: NSSize(width: 64, height: 64))
+        let player = Player(imageNamed: "Player")
+        player.texture?.filteringMode = .nearest
+        player.scale(to: CGSize(width: 64, height: 64))
+        player.anchorPoint = .zero
         scene.addChild(player)
         return player
     }
