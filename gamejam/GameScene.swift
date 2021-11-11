@@ -1,8 +1,14 @@
 import SpriteKit
 import GameplayKit
 
+protocol GameObject {
+    static func create(_ scene: GameScene, x: Int, y: Int) -> Void
+    func handleKeyDown(_ event: NSEvent) -> Void
+}
+
 class GameScene: SKScene {
     var spritesheet: SpriteSheet?
+    var entities: [GameObject] = []
     
     private var player: Player?
     
@@ -15,13 +21,28 @@ class GameScene: SKScene {
             columns: 13,
             framesize: CGSize(width: 64, height: 64)
         )
-        self.player = Player.create(self)
+        
+        let loader = TilemapLoader(fileNamed: "level_1")
+        loader.forEachLayer({ (l: Layer) in
+            if (l.name == "entities") {
+                // Since we know this is an object layer, let's ignore the Optional
+                l.objects!.forEach({ (obj: Object) in
+                    switch obj.name {
+                    case "player":
+                        // TODO: Offset Y to fit SpriteKit's coordinate system.
+                        Player.create(self, x: obj.x, y: obj.y)
+                    default:
+                        print("unhandled obj: \(obj.name)")
+                    }
+                })
+            }
+        })
     }
     
     override func keyDown(with event: NSEvent) {
-        if let p = self.player {
-            p.handleKeyDown(event)
-        }
+        self.entities.forEach({ e in
+            e.handleKeyDown(event)
+        })
     }
     
     
