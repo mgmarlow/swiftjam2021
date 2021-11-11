@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C81B962B273D85E500249A13 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81B962A273D85E500249A13 /* Player.swift */; };
 		C8338380273D8DC300B78B63 /* level_1.json in Resources */ = {isa = PBXBuildFile; fileRef = C833837F273D8DC300B78B63 /* level_1.json */; };
+		C8338382273D9C4D00B78B63 /* TilemapLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8338381273D9C4D00B78B63 /* TilemapLoader.swift */; };
 		C84E7473273CDBFF001CA089 /* SpriteSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E7472273CDBFF001CA089 /* SpriteSheet.swift */; };
 		C880B0B1273A2B6300590586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C880B0B0273A2B6300590586 /* AppDelegate.swift */; };
 		C880B0B7273A2B6300590586 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C880B0B6273A2B6300590586 /* GameScene.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		C81B962A273D85E500249A13 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		C833837F273D8DC300B78B63 /* level_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = level_1.json; sourceTree = "<group>"; };
+		C8338381273D9C4D00B78B63 /* TilemapLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilemapLoader.swift; sourceTree = "<group>"; };
 		C84E7472273CDBFF001CA089 /* SpriteSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteSheet.swift; sourceTree = "<group>"; };
 		C880B0AD273A2B6300590586 /* gamejam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gamejam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C880B0B0273A2B6300590586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				C880B0BC273A2B6400590586 /* Main.storyboard */,
 				C880B0BF273A2B6400590586 /* gamejam.entitlements */,
 				C81B962A273D85E500249A13 /* Player.swift */,
+				C8338381273D9C4D00B78B63 /* TilemapLoader.swift */,
 			);
 			path = gamejam;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 				C880B0B9273A2B6300590586 /* ViewController.swift in Sources */,
 				C880B0B7273A2B6300590586 /* GameScene.swift in Sources */,
 				C81B962B273D85E500249A13 /* Player.swift in Sources */,
+				C8338382273D9C4D00B78B63 /* TilemapLoader.swift in Sources */,
 				C880B0B1273A2B6300590586 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
