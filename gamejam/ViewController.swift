@@ -17,13 +17,12 @@ class ViewController: NSViewController {
         super.viewDidLoad()
 
         if let view = self.skView {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                scene.scaleMode = .aspectFit
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
+            // Width and height at 8 * 64
+            let scene = GameScene(size: CGSize(width: 512, height: 512))
+            scene.scaleMode = .aspectFit
+            
+            // Present the scene
+            view.presentScene(scene)
             
             view.ignoresSiblingOrder = true
             
