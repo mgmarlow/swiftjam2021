@@ -1,11 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "character_0000.png",
+      "filename" : "sokoban_tilesheet.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "sokoban_tilesheet@2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

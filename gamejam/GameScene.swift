@@ -9,9 +9,11 @@ import SpriteKit
 import GameplayKit
 
 class Player: SKSpriteNode {
-    static func create(_ scene: SKScene) -> Player {
-        let player = Player(imageNamed: "Player")
-        player.texture?.filteringMode = .nearest
+    static func create(_ scene: GameScene) -> Player {
+        let image = scene.spritesheet?.getTexture(row: 4, column: 0)
+        let player = Player(texture: image)
+        // If pixel art is wanted:
+        // player.texture?.filteringMode = .nearest
         player.scale(to: CGSize(width: 64, height: 64))
         player.anchorPoint = .zero
         scene.addChild(player)
@@ -41,10 +43,19 @@ class Player: SKSpriteNode {
 }
 
 class GameScene: SKScene {
+    var spritesheet: SpriteSheet?
+    
     private var player: Player?
     
     // Prefer sceneDidLoad or didMove for initialization? Original uses didMove.
     override func sceneDidLoad() {
+        // Load a spritesheet into memory that all entities will use to create textures.
+        self.spritesheet = SpriteSheet(
+            texture: SKTexture(imageNamed: "spritesheet"),
+            rows: 8,
+            columns: 13,
+            framesize: CGSize(width: 64, height: 64)
+        )
         self.player = Player.create(self)
     }
     
