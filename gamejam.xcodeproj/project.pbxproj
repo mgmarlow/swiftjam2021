@@ -16,6 +16,7 @@
 		C880B0B9273A2B6300590586 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C880B0B8273A2B6300590586 /* ViewController.swift */; };
 		C880B0BB273A2B6400590586 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C880B0BA273A2B6400590586 /* Assets.xcassets */; };
 		C880B0BE273A2B6400590586 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C880B0BC273A2B6400590586 /* Main.storyboard */; };
+		C8C75104274075C300C0813E /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C75103274075C300C0813E /* Entity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		C880B0BA273A2B6400590586 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C880B0BD273A2B6400590586 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C880B0BF273A2B6400590586 /* gamejam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gamejam.entitlements; sourceTree = "<group>"; };
+		C8C75103274075C300C0813E /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				C880B0BF273A2B6400590586 /* gamejam.entitlements */,
 				C81B962A273D85E500249A13 /* Player.swift */,
 				C8338381273D9C4D00B78B63 /* TilemapLoader.swift */,
+				C8C75103274075C300C0813E /* Entity.swift */,
 			);
 			path = gamejam;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 			files = (
 				C84E7473273CDBFF001CA089 /* SpriteSheet.swift in Sources */,
 				C880B0B9273A2B6300590586 /* ViewController.swift in Sources */,
+				C8C75104274075C300C0813E /* Entity.swift in Sources */,
 				C880B0B7273A2B6300590586 /* GameScene.swift in Sources */,
 				C81B962B273D85E500249A13 /* Player.swift in Sources */,
 				C8338382273D9C4D00B78B63 /* TilemapLoader.swift in Sources */,

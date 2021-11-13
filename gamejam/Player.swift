@@ -1,22 +1,20 @@
 import SpriteKit
 import GameplayKit
 
-class Player: SKSpriteNode, GameObject {
+class Player: Entity {
     var cx: Int = 0
     var cy: Int = 0
     
-    static func create(_ scene: GameScene, x: Int, y: Int) {
-        let image = scene.spritesheet?.getTexture(row: 4, column: 0)
-        let player = Player(texture: image)
-        
-        // Using .nearest for pixel art
-        player.texture?.filteringMode = .nearest
-        player.size = CGSize(width: 64, height: 64)
-        player.anchorPoint = .zero
-        player.setPositionFromPx(x: x, y: y)
-        
-        scene.addChild(player)
-        scene.entities.append(player)
+    init(_ scene: GameScene, x: Int, y: Int, tileIndex: Int) {
+        super.init(scene, size: CGSize(width: 64, height: 64), tileIndex: tileIndex)
+        self.name = "player"
+        self.texture?.filteringMode = .nearest
+        self.anchorPoint = .zero
+        self.setPositionFromPx(x: x, y: y)
+    }
+    
+    required init(coder decoder: NSCoder) {
+        super.init(coder: decoder)
     }
     
     func setPositionFromPx(x: Int, y: Int) {
@@ -36,7 +34,7 @@ class Player: SKSpriteNode, GameObject {
         self.setPosition(cx: self.cx + x, cy: self.cy + y)
     }
     
-    func handleKeyDown(_ event: NSEvent) {
+    override func handleKeyDown(_ event: NSEvent) {
         // Note: Spritekit reverses y coordinates against gamedev conventions
         switch event.keyCode {
         case 13: // w
