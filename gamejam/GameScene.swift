@@ -2,7 +2,6 @@ import SpriteKit
 import GameplayKit
 
 protocol GameObject {
-    static func create(_ scene: GameScene, x: Int, y: Int) -> Void
     func handleKeyDown(_ event: NSEvent) -> Void
 }
 
@@ -29,8 +28,9 @@ class GameScene: SKScene {
                 l.objects!.forEach({ (obj: Object) in
                     switch obj.name {
                     case "player":
-                        // TODO: Offset Y to fit SpriteKit's coordinate system.
-                        Player.create(self, x: obj.x, y: obj.y)
+                        let entity = Player(self, x: obj.x, y: obj.y, tileIndex: 65)
+                        self.addChild(entity)
+                        self.entities.append(entity)
                     default:
                         print("unhandled obj: \(obj.name)")
                     }
