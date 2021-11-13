@@ -1,21 +1,39 @@
 import SpriteKit
 import GameplayKit
 
-class Player: SKSpriteNode {
-    static func create(_ scene: GameScene) -> Player {
+class Player: SKSpriteNode, GameObject {
+    var cx: Int = 0
+    var cy: Int = 0
+    
+    static func create(_ scene: GameScene, x: Int, y: Int) {
         let image = scene.spritesheet?.getTexture(row: 4, column: 0)
         let player = Player(texture: image)
+        
         // Using .nearest for pixel art
         player.texture?.filteringMode = .nearest
-        player.scale(to: CGSize(width: 64, height: 64))
+        player.size = CGSize(width: 64, height: 64)
         player.anchorPoint = .zero
+        player.setPositionFromPx(x: x, y: y)
+        
         scene.addChild(player)
-        return player
+        scene.entities.append(player)
+    }
+    
+    func setPositionFromPx(x: Int, y: Int) {
+        self.cx = Int(x / Int(self.size.width))
+        self.cy = Int(y / Int(self.size.height))
+        self.setPosition(cx: cx, cy: cy)
+    }
+    
+    func setPosition(cx: Int, cy: Int) {
+        self.cx = cx
+        self.cy = cy
+        self.position.x = CGFloat(cx * Int(self.size.width))
+        self.position.y = CGFloat(cy * Int(self.size.height))
     }
     
     func move(x: Int, y: Int) {
-        self.position.x += CGFloat(x * 64)
-        self.position.y += CGFloat(y * 64)
+        self.setPosition(cx: self.cx + x, cy: self.cy + y)
     }
     
     func handleKeyDown(_ event: NSEvent) {
