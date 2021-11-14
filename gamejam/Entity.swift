@@ -15,18 +15,6 @@ class Entity: SKSpriteNode, GameObject {
         super.init(coder: decoder)!
     }
     
-    static func getTexture(sheet: SpriteSheet?, tileIndex: Int) -> SKTexture? {
-        let (row, col) = Entity.getCoordFromTileIndex(tileIndex)
-        return sheet?.getTexture(row: row, column: col)
-    }
-    
-    // tilesheet indices: 0-103, tilesheet dimensions: 8x13
-    static func getCoordFromTileIndex(_ tileIndex: Int) -> (Int, Int) {
-        let row = tileIndex / 13
-        let col = tileIndex % 13
-        return (row, col)
-    }
-    
     func handleKeyDown(_ event: NSEvent) {
         // disregard
     }
