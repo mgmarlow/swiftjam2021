@@ -15,6 +15,7 @@ class GameScene: SKScene {
     override func sceneDidLoad() {
         self.levelLoader = TilemapLoader(fileNamed: "level_1")
         let tilemap = self.levelLoader!.createTilemapNode()
+        tilemap.anchorPoint = .zero
         self.addChild(tilemap)
         self.levelLoader!.forEachEntity(self.createEntities)
     }

@@ -84,17 +84,13 @@ class TilemapLoader {
             return group
         })
         
-        let node = SKTileMapNode(
+        return SKTileMapNode(
             tileSet: tileset,
             columns: self.tilemap!.width,
             rows: self.tilemap!.height,
             tileSize: CGSize(width: self.tilemap!.tilewidth, height: self.tilemap!.tileheight),
             tileGroupLayout: layout
         )
-        
-        node.anchorPoint = .zero
-        
-        return node
     }
     
     func forEachEntity(_ handleCreateEntity: (Object) -> Void) {
