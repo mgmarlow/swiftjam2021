@@ -6,11 +6,9 @@ enum EntityError: Error {
 }
 
 class Entity: SKSpriteNode, GameObject {
-    init(_ scene: GameScene, size: CGSize, tileIndex: Int) {
-        let texture = Entity.getTexture(sheet: scene.spritesheet, tileIndex: tileIndex)
+    init(_ scene: GameScene, size: CGSize, imageNamed: String) {
+        let texture = SKTexture(imageNamed: imageNamed)
         super.init(texture: texture, color: NSColor.clear, size: size)
-        // Why are the textures flipped?
-        self.yScale = -1.0
     }
     
     required init(coder decoder: NSCoder) {

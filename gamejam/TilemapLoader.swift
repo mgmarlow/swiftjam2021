@@ -1,4 +1,5 @@
 import Foundation
+import SpriteKit
 
 struct Object: Codable {
     var id: Int
@@ -66,9 +67,36 @@ class TilemapLoader {
         self.tilemap = try? loadJson()
     }
     
-    func forEachLayer(_ handleLayer: (Layer) -> Void) {
+    func createTilemapNode() -> SKTileMapNode {
+        // TODO: Read this off the data array
+        let tileIndex = 89
+        let texture = SKTexture(imageNamed: "tile_\(tileIndex)")
+
+        // Create the tileset
+        let tilesize = CGSize(width: 64, height: 64)
+        let definition = SKTileDefinition(texture: texture, size: tilesize)
+        let tilegroup = SKTileGroup(tileDefinition: definition)
+        let tileset = SKTileSet(tileGroups: [tilegroup], tileSetType: .grid)
+        
+        let node = SKTileMapNode(
+            tileSet: tileset,
+            columns: self.tilemap!.width,
+            rows: self.tilemap!.height,
+            tileSize: CGSize(width: self.tilemap!.tilewidth, height: self.tilemap!.tileheight),
+            fillWith: tilegroup
+        )
+        node.anchorPoint = .zero
+        
+        return node
+    }
+    
+    func forEachEntity(_ handleCreateEntity: (Object) -> Void) {
         if let tilemap = self.tilemap {
-            tilemap.layers.forEach(handleLayer)
+            tilemap.layers.forEach({ (l: Layer) in
+                if (l.name == "entities") {
+                    l.objects!.forEach(handleCreateEntity)
+                }
+            })
         }
     }
     

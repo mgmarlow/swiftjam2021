@@ -5,8 +5,8 @@ class Player: Entity {
     var cx: Int = 0
     var cy: Int = 0
     
-    init(_ scene: GameScene, x: Int, y: Int, tileIndex: Int) {
-        super.init(scene, size: CGSize(width: 64, height: 64), tileIndex: tileIndex)
+    init(_ scene: GameScene, x: Int, y: Int) {
+        super.init(scene, size: CGSize(width: 64, height: 64), imageNamed: "player")
         self.name = "player"
         self.anchorPoint = .zero
         self.setPositionFromPx(x: x, y: y)
