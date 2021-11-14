@@ -8,7 +8,6 @@ class Player: Entity {
     init(_ scene: GameScene, x: Int, y: Int, tileIndex: Int) {
         super.init(scene, size: CGSize(width: 64, height: 64), tileIndex: tileIndex)
         self.name = "player"
-        self.texture?.filteringMode = .nearest
         self.anchorPoint = .zero
         self.setPositionFromPx(x: x, y: y)
     }

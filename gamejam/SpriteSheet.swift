@@ -28,12 +28,17 @@ class SpriteSheet {
         // Values must be between 0 and 1.
         // e.g. (x: 0, y: 0, width: 1, height: 1), which covers the entire texture.
         let textureRect = CGRect(
-            x: (x / self.texture.size().width),
-            y: (y / self.texture.size().height),
-            width: (self.framesize.width / self.texture.size().width),
-            height: (self.framesize.height / self.texture.size().height)
+            x: self.nearest(x / self.texture.size().width),
+            y: self.nearest(y / self.texture.size().height),
+            width: self.nearest(self.framesize.width / self.texture.size().width),
+            height: self.nearest(self.framesize.height / self.texture.size().height)
         )
         
         return SKTexture(rect: textureRect, in: self.texture)
+    }
+    
+    // Round to three decimal places
+    func nearest(_ v: CGFloat) -> CGFloat {
+        return round(v * 1000) / 1000.0
     }
 }
