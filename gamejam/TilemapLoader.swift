@@ -68,23 +68,30 @@ class TilemapLoader {
     }
     
     func createTilemapNode() -> SKTileMapNode {
-        // TODO: Read this off the data array
-        let tileIndex = 89
-        let texture = SKTexture(imageNamed: "tile_\(tileIndex)")
+        guard let tileset = SKTileSet(named: "Ground Tiles") else {
+            fatalError("tileset not found")
+        }
+        
+        guard let bgLayer = self.tilemap!.layers.first(where: { $0.name == "background" }) else {
+            fatalError("background layer not found")
+        }
 
-        // Create the tileset
-        let tilesize = CGSize(width: 64, height: 64)
-        let definition = SKTileDefinition(texture: texture, size: tilesize)
-        let tilegroup = SKTileGroup(tileDefinition: definition)
-        let tileset = SKTileSet(tileGroups: [tilegroup], tileSetType: .grid)
+        let layout: [SKTileGroup] = bgLayer.data!.map({ (data: Int) in
+            let groupName = "tile_\(data - 1)"
+            guard let group = tileset.tileGroups.first(where: {$0.name == groupName}) else {
+                fatalError("could not find tilegroup \(groupName)")
+            }
+            return group
+        })
         
         let node = SKTileMapNode(
             tileSet: tileset,
             columns: self.tilemap!.width,
             rows: self.tilemap!.height,
             tileSize: CGSize(width: self.tilemap!.tilewidth, height: self.tilemap!.tileheight),
-            fillWith: tilegroup
+            tileGroupLayout: layout
         )
+        
         node.anchorPoint = .zero
         
         return node
