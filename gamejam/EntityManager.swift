@@ -6,6 +6,7 @@ class EntityManager {
     var entities = Set<GKEntity>()
     let scene: SKScene
     lazy var moveSystem: GKComponentSystem<MoveComponent> = GKComponentSystem(componentClass: MoveComponent.self)
+    lazy var positionSystem: GKComponentSystem<PositionComponent> = GKComponentSystem(componentClass: PositionComponent.self)
     
     init(scene: SKScene) {
         self.scene = scene
@@ -19,6 +20,7 @@ class EntityManager {
         }
         
         moveSystem.addComponent(foundIn: entity)
+        positionSystem.addComponent(foundIn: entity)
     }
     
     func remove(_ entity: GKEntity) {
@@ -35,5 +37,6 @@ class EntityManager {
     
     func update(_ deltaTime: CFTimeInterval) {
         moveSystem.components.forEach({ $0.update(deltaTime: deltaTime) })
+        positionSystem.components.forEach({ $0.update(deltaTime: deltaTime) })
     }
 }

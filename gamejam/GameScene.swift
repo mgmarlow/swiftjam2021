@@ -46,12 +46,7 @@ class GameScene: SKScene {
             // TODO: Move these into their own object classes
             let entity = GKEntity()
             entity.addComponent(SpriteComponent(texture: SKTexture(imageNamed: obj.name)))
-            if let sprite = entity.component(ofType: SpriteComponent.self) {
-                sprite.node.name = obj.name
-                sprite.node.position.x = CGFloat(obj.x)
-                sprite.node.position.y = CGFloat(correctedY)
-                sprite.node.anchorPoint = .zero
-            }
+            entity.addComponent(PositionComponent(x: obj.x / 64, y: correctedY / 64))
             return entity
         case "player":
             return Player(x: obj.x, y: correctedY)
