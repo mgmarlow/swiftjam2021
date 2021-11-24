@@ -47,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		700B5154274DCEFF00C4E286 /* entities */ = {
+			isa = PBXGroup;
+			children = (
+				C81B962A273D85E500249A13 /* Player.swift */,
+			);
+			path = entities;
+			sourceTree = "<group>";
+		};
 		C804AF882741A2AC0062C886 /* components */ = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +84,7 @@
 		C880B0AF273A2B6300590586 /* gamejam */ = {
 			isa = PBXGroup;
 			children = (
+				700B5154274DCEFF00C4E286 /* entities */,
 				700B5152274DCE4E00C4E286 /* Level.swift */,
 				C804AF882741A2AC0062C886 /* components */,
 				C880B0B0273A2B6300590586 /* AppDelegate.swift */,
@@ -84,7 +93,6 @@
 				C880B0BA273A2B6400590586 /* Assets.xcassets */,
 				C880B0BC273A2B6400590586 /* Main.storyboard */,
 				C880B0BF273A2B6400590586 /* gamejam.entitlements */,
-				C81B962A273D85E500249A13 /* Player.swift */,
 				C804AF892741A9200062C886 /* EntityManager.swift */,
 			);
 			path = gamejam;
