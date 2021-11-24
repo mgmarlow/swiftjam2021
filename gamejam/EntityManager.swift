@@ -7,10 +7,10 @@ class EntityManager {
     
     var entities = Set<GKEntity>()
     var toRemove = Set<GKEntity>()
-    // Add component systems that need to update here
-    lazy var systems: [GKComponentSystem] = {
-        return []
-    }()
+
+    lazy var tags = GKComponentSystem(componentClass: TagComponent.self)
+    lazy var positionSystem = GKComponentSystem(componentClass: PositionComponent.self)
+    lazy var systems: [GKComponentSystem<GKComponent>] = [tags, positionSystem]
     
     init(scene: SKScene) {
         self.scene = scene
@@ -23,9 +23,7 @@ class EntityManager {
             scene.addChild(spriteNode)
         }
         
-        for system in systems {
-            system.addComponent(foundIn: entity)
-        }
+        systems.forEach({ $0.addComponent(foundIn: entity) })
     }
     
     func remove(_ entity: GKEntity) {
@@ -39,13 +37,7 @@ class EntityManager {
     }
     
     func handleKeyDown(_ event: NSEvent) {
-        let player = entities.first(where: { (entity: GKEntity) in
-            guard let tagCmp = entity.component(ofType: TagComponent.self) else {
-                return false
-            }
-            
-            return tagCmp.tag == "player"
-        })
+        let player = getBy(tag: "player")
         
         switch event.keyCode {
         case 126: // up
@@ -69,15 +61,19 @@ class EntityManager {
         }
     }
     
-    func update(_ deltaTime: CFTimeInterval) {
-        for system in systems {
-            system.components.forEach({ $0.update(deltaTime: deltaTime) })
+    func getBy(tag: String) -> GKEntity? {
+        for comp in tags.components {
+            if ((comp as! TagComponent).tag == tag) {
+                return comp.entity
+            }
         }
         
+        return nil
+    }
+    
+    func update(_ deltaTime: CFTimeInterval) {
         for removal in toRemove {
-            for system in systems {
-                system.removeComponent(foundIn: removal)
-            }
+            systems.forEach({ $0.removeComponent(foundIn: removal) })
         }
         toRemove.removeAll()
     }
