@@ -3,9 +3,14 @@ import GameplayKit
 import SpriteKit
 
 class EntityManager {
-    var entities = Set<GKEntity>()
     let scene: SKScene
-    lazy var positionSystem: GKComponentSystem<PositionComponent> = GKComponentSystem(componentClass: PositionComponent.self)
+    
+    var entities = Set<GKEntity>()
+    var toRemove = Set<GKEntity>()
+    lazy var systems: [GKComponentSystem] = {
+        let positionSystem = GKComponentSystem(componentClass: PositionComponent.self)
+        return [positionSystem]
+    }()
     
     init(scene: SKScene) {
         self.scene = scene
@@ -18,7 +23,9 @@ class EntityManager {
             scene.addChild(spriteNode)
         }
         
-        positionSystem.addComponent(foundIn: entity)
+        for system in systems {
+            system.addComponent(foundIn: entity)
+        }
     }
     
     func remove(_ entity: GKEntity) {
@@ -27,7 +34,8 @@ class EntityManager {
         }
         
         entities.remove(entity)
-        positionSystem.removeComponent(foundIn: entity)
+        // Need to clean up our component systems as well, but after they update:
+        toRemove.insert(entity)
     }
     
     func handleKeyDown(_ event: NSEvent) {
@@ -62,6 +70,15 @@ class EntityManager {
     }
     
     func update(_ deltaTime: CFTimeInterval) {
-        positionSystem.components.forEach({ $0.update(deltaTime: deltaTime) })
+        for system in systems {
+            system.components.forEach({ $0.update(deltaTime: deltaTime) })
+        }
+        
+        for removal in toRemove {
+            for system in systems {
+                system.removeComponent(foundIn: removal)
+            }
+        }
+        toRemove.removeAll()
     }
 }
