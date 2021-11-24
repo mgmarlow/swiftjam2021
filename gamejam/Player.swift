@@ -5,11 +5,8 @@ class Player: GKEntity {
     init(x: Int, y: Int) {
         super.init()
         let texture = SKTexture(imageNamed: "player")
-        let cx = x / Int(texture.size().width)
-        let cy = y / Int(texture.size().height)
-        
         addComponent(SpriteComponent(texture: texture))
-        addComponent(PositionComponent(x: cx, y: cy))
+        addComponent(PositionComponent(x: x, y: y))
         addComponent(MoveComponent())
     }
     
