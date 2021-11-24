@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		700B5153274DCE4E00C4E286 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700B5152274DCE4E00C4E286 /* Level.swift */; };
+		700B5156274DD3ED00C4E286 /* TagComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700B5155274DD3ED00C4E286 /* TagComponent.swift */; };
 		C804AF8A2741A9200062C886 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C804AF892741A9200062C886 /* EntityManager.swift */; };
 		C804AF8C2741A9890062C886 /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C804AF8B2741A9880062C886 /* SpriteComponent.swift */; };
-		C804AF8E2741A9AB0062C886 /* MoveComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C804AF8D2741A9AB0062C886 /* MoveComponent.swift */; };
 		C81B962B273D85E500249A13 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81B962A273D85E500249A13 /* Player.swift */; };
 		C880B0B1273A2B6300590586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C880B0B0273A2B6300590586 /* AppDelegate.swift */; };
 		C880B0B7273A2B6300590586 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C880B0B6273A2B6300590586 /* GameScene.swift */; };
@@ -22,9 +22,9 @@
 
 /* Begin PBXFileReference section */
 		700B5152274DCE4E00C4E286 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		700B5155274DD3ED00C4E286 /* TagComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagComponent.swift; sourceTree = "<group>"; };
 		C804AF892741A9200062C886 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
 		C804AF8B2741A9880062C886 /* SpriteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
-		C804AF8D2741A9AB0062C886 /* MoveComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveComponent.swift; sourceTree = "<group>"; };
 		C81B962A273D85E500249A13 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		C880B0AD273A2B6300590586 /* gamejam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gamejam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C880B0B0273A2B6300590586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,8 +59,8 @@
 			isa = PBXGroup;
 			children = (
 				C804AF8B2741A9880062C886 /* SpriteComponent.swift */,
-				C804AF8D2741A9AB0062C886 /* MoveComponent.swift */,
 				C8DF38172744B12700A8188C /* PositionComponent.swift */,
+				700B5155274DD3ED00C4E286 /* TagComponent.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -85,11 +85,11 @@
 			isa = PBXGroup;
 			children = (
 				700B5154274DCEFF00C4E286 /* entities */,
-				700B5152274DCE4E00C4E286 /* Level.swift */,
 				C804AF882741A2AC0062C886 /* components */,
 				C880B0B0273A2B6300590586 /* AppDelegate.swift */,
 				C880B0B6273A2B6300590586 /* GameScene.swift */,
 				C880B0B8273A2B6300590586 /* ViewController.swift */,
+				700B5152274DCE4E00C4E286 /* Level.swift */,
 				C880B0BA273A2B6400590586 /* Assets.xcassets */,
 				C880B0BC273A2B6400590586 /* Main.storyboard */,
 				C880B0BF273A2B6400590586 /* gamejam.entitlements */,
@@ -168,12 +168,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				700B5156274DD3ED00C4E286 /* TagComponent.swift in Sources */,
 				C880B0B9273A2B6300590586 /* ViewController.swift in Sources */,
 				C804AF8A2741A9200062C886 /* EntityManager.swift in Sources */,
 				C804AF8C2741A9890062C886 /* SpriteComponent.swift in Sources */,
 				C880B0B7273A2B6300590586 /* GameScene.swift in Sources */,
 				C81B962B273D85E500249A13 /* Player.swift in Sources */,
-				C804AF8E2741A9AB0062C886 /* MoveComponent.swift in Sources */,
 				C8DF38182744B12700A8188C /* PositionComponent.swift in Sources */,
 				700B5153274DCE4E00C4E286 /* Level.swift in Sources */,
 				C880B0B1273A2B6300590586 /* AppDelegate.swift in Sources */,

@@ -7,7 +7,7 @@ class Player: GKEntity {
         let texture = SKTexture(imageNamed: "player")
         addComponent(SpriteComponent(texture: texture))
         addComponent(PositionComponent(x: x, y: y))
-        addComponent(MoveComponent())
+        addComponent(TagComponent("player"))
     }
     
     required init(coder decoder: NSCoder) {
