@@ -7,9 +7,9 @@ class EntityManager {
     
     var entities = Set<GKEntity>()
     var toRemove = Set<GKEntity>()
+    // Add component systems that need to update here
     lazy var systems: [GKComponentSystem] = {
-        let positionSystem = GKComponentSystem(componentClass: PositionComponent.self)
-        return [positionSystem]
+        return []
     }()
     
     init(scene: SKScene) {

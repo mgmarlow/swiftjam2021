@@ -14,22 +14,30 @@ class PositionComponent: GKComponent {
         super.init()
     }
     
+    override func didAddToEntity() {
+        updateSprite()
+    }
+    
     required init(coder decoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func setPosition(x: Int, y: Int) {
         position = Point(x: x, y: y)
+        updateSprite()
     }
     
-    func move(_ cnext: Point) {
-        setPosition(x: position.x + cnext.x, y: position.y + cnext.y)
+    func move(_ dir: Point) {
+        let nextPosition = Point(x: position.x + dir.x, y: position.y + dir.y)
+        moveTo(nextPosition)
     }
     
-    // Keep sprite pixel position in sync with coordinates
-    override func update(deltaTime seconds: TimeInterval) {
-        super.update(deltaTime: seconds)
-        
+    func moveTo(_ p: Point) {
+        setPosition(x: p.x, y: p.y)
+    }
+    
+    // Keep sprite x/y in sync with coordinate position.
+    func updateSprite() {
         guard let spriteCmp = entity?.component(ofType: SpriteComponent.self) else {
             return
         }
