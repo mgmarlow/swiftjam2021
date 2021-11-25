@@ -3,9 +3,9 @@ import GameplayKit
 import SpriteKit
 
 class InputSystem: GKComponentSystem<GKComponent> {
-    func handleKeyDown(_ event: NSEvent) {
+    func handleKeyDown(_ event: NSEvent, positionSystem: GKComponentSystem<PositionComponent>) {
         components.forEach({ (component: GKComponent) in
-            (component as! InputComponent).handleKeyDown(event)
+            (component as! InputComponent).handleKeyDown(event, positionSystem: positionSystem)
         })
     }
 }
@@ -17,7 +17,11 @@ class EntityManager {
     var toRemove = Set<GKEntity>()
 
     lazy var inputSystem = InputSystem(componentClass: InputComponent.self)
-    lazy var systems: [GKComponentSystem<GKComponent>] = [inputSystem]
+    lazy var positionSystem = GKComponentSystem<PositionComponent>(componentClass: PositionComponent.self)
+    lazy var systems: [GKComponentSystem<GKComponent>] = [
+        inputSystem,
+        positionSystem as! GKComponentSystem<GKComponent>
+    ]
     
     init(scene: SKScene) {
         self.scene = scene
@@ -44,7 +48,7 @@ class EntityManager {
     }
     
     func handleKeyDown(_ event: NSEvent) {
-        inputSystem.handleKeyDown(event)
+        inputSystem.handleKeyDown(event, positionSystem: positionSystem)
     }
     
     func update(_ deltaTime: CFTimeInterval) {
