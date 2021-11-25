@@ -8,6 +8,7 @@ class Player: GKEntity {
         addComponent(SpriteComponent(texture: texture))
         addComponent(PositionComponent(x: x, y: y))
         addComponent(TagComponent("player"))
+        addComponent(InputComponent())
     }
     
     required init(coder decoder: NSCoder) {

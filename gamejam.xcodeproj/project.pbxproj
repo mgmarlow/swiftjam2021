@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		700B5153274DCE4E00C4E286 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700B5152274DCE4E00C4E286 /* Level.swift */; };
 		700B5156274DD3ED00C4E286 /* TagComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700B5155274DD3ED00C4E286 /* TagComponent.swift */; };
+		702C0F6E274FEAC900C30C92 /* InputComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702C0F6D274FEAC800C30C92 /* InputComponent.swift */; };
 		C804AF8A2741A9200062C886 /* EntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C804AF892741A9200062C886 /* EntityManager.swift */; };
 		C804AF8C2741A9890062C886 /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C804AF8B2741A9880062C886 /* SpriteComponent.swift */; };
 		C81B962B273D85E500249A13 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81B962A273D85E500249A13 /* Player.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		700B5152274DCE4E00C4E286 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		700B5155274DD3ED00C4E286 /* TagComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagComponent.swift; sourceTree = "<group>"; };
+		702C0F6D274FEAC800C30C92 /* InputComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputComponent.swift; sourceTree = "<group>"; };
 		C804AF892741A9200062C886 /* EntityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityManager.swift; sourceTree = "<group>"; };
 		C804AF8B2741A9880062C886 /* SpriteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
 		C81B962A273D85E500249A13 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				C804AF8B2741A9880062C886 /* SpriteComponent.swift */,
 				C8DF38172744B12700A8188C /* PositionComponent.swift */,
 				700B5155274DD3ED00C4E286 /* TagComponent.swift */,
+				702C0F6D274FEAC800C30C92 /* InputComponent.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 				C804AF8C2741A9890062C886 /* SpriteComponent.swift in Sources */,
 				C880B0B7273A2B6300590586 /* GameScene.swift in Sources */,
 				C81B962B273D85E500249A13 /* Player.swift in Sources */,
+				702C0F6E274FEAC900C30C92 /* InputComponent.swift in Sources */,
 				C8DF38182744B12700A8188C /* PositionComponent.swift in Sources */,
 				700B5153274DCE4E00C4E286 /* Level.swift in Sources */,
 				C880B0B1273A2B6300590586 /* AppDelegate.swift in Sources */,

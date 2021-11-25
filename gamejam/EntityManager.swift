@@ -2,15 +2,22 @@ import Foundation
 import GameplayKit
 import SpriteKit
 
+class InputSystem: GKComponentSystem<GKComponent> {
+    func handleKeyDown(_ event: NSEvent) {
+        components.forEach({ (component: GKComponent) in
+            (component as! InputComponent).handleKeyDown(event)
+        })
+    }
+}
+
 class EntityManager {
     let scene: SKScene
     
     var entities = Set<GKEntity>()
     var toRemove = Set<GKEntity>()
 
-    lazy var tags = GKComponentSystem(componentClass: TagComponent.self)
-    lazy var positionSystem = GKComponentSystem(componentClass: PositionComponent.self)
-    lazy var systems: [GKComponentSystem<GKComponent>] = [tags, positionSystem]
+    lazy var inputSystem = InputSystem(componentClass: InputComponent.self)
+    lazy var systems: [GKComponentSystem<GKComponent>] = [inputSystem]
     
     init(scene: SKScene) {
         self.scene = scene
@@ -37,38 +44,7 @@ class EntityManager {
     }
     
     func handleKeyDown(_ event: NSEvent) {
-        let player = getBy(tag: "player")
-        
-        switch event.keyCode {
-        case 126: // up
-            if let posCmp = player?.component(ofType: PositionComponent.self) {
-                posCmp.move(Point(x: 0, y: 1))
-            }
-        case 125: // down
-            if let posCmp = player?.component(ofType: PositionComponent.self) {
-                posCmp.move(Point(x: 0, y: -1))
-            }
-        case 124: // right
-            if let posCmp = player?.component(ofType: PositionComponent.self) {
-                posCmp.move(Point(x: 1, y: 0))
-            }
-        case 123: // left
-            if let posCmp = player?.component(ofType: PositionComponent.self) {
-                posCmp.move(Point(x: -1, y: 0))
-            }
-        default:
-            print("keyDown: \(event.characters!) keyCode: \(event.keyCode)")
-        }
-    }
-    
-    func getBy(tag: String) -> GKEntity? {
-        for comp in tags.components {
-            if ((comp as! TagComponent).tag == tag) {
-                return comp.entity
-            }
-        }
-        
-        return nil
+        inputSystem.handleKeyDown(event)
     }
     
     func update(_ deltaTime: CFTimeInterval) {
